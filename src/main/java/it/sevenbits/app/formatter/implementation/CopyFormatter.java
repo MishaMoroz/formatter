@@ -7,7 +7,7 @@ import it.sevenbits.app.io.reader.ReaderException;
 import it.sevenbits.app.io.writer.IWriter;
 import it.sevenbits.app.io.writer.WriterException;
 
-public class FormatterJavaCode implements IFormatter {
+public class CopyFormatter implements IFormatter {
 
 
     @Override

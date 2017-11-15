@@ -1,6 +1,6 @@
 package it.sevenbits.app.formatter;
 
-import it.sevenbits.app.formatter.implementation.FormatterJavaCode;
+import it.sevenbits.app.formatter.implementation.CopyFormatter;
 import it.sevenbits.app.io.reader.IReader;
 import it.sevenbits.app.io.reader.ReaderException;
 import it.sevenbits.app.io.reader.implementation.StringReader;
@@ -12,13 +12,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class FormatterJavaCodeTest {
+public class CopyFormatterTest {
     private IFormatter formatter;
 
     @Before
     public void setUp() {
 
-        formatter = new FormatterJavaCode();
+        formatter = new CopyFormatter();
     }
 
     @Test

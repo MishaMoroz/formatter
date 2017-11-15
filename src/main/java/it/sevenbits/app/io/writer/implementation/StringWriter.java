@@ -19,6 +19,11 @@ public class StringWriter implements IWriter {
     @Override
     public void write(final char symbol) throws WriterException {
 
-        resultString.append(symbol);
+        try {
+            resultString.append(symbol);
+        } catch (Exception e) {
+            throw new WriterException("Error writing", e);
+        }
+
     }
 }

@@ -5,20 +5,22 @@ import it.sevenbits.app.io.closable.IClosable;
 import it.sevenbits.app.io.reader.IReader;
 import it.sevenbits.app.io.reader.ReaderException;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 public class FileReader implements IReader, IClosable {
 
     private BufferedReader bufferedReader;
     private int currentSymbolId;
 
-    public FileReader(final String pathFile) throws ReaderException {
+    public FileReader(final String path) throws ReaderException, UnsupportedEncodingException {
         try {
-            bufferedReader = new BufferedReader(new java.io.FileReader(pathFile));
+            InputStream fileStream =
+                    new FileInputStream(new File(path));
+            Reader fileReader =
+                    new InputStreamReader(fileStream, "utf-8");
+            bufferedReader = new BufferedReader(fileReader);
         } catch (FileNotFoundException e) {
-            throw new ReaderException("Error reading", e);
+            throw new ReaderException("Opening file error", e);
         }
     }
 
@@ -42,7 +44,7 @@ public class FileReader implements IReader, IClosable {
         try {
             bufferedReader.close();
         } catch (IOException e) {
-            throw new ClosableException("Error closing", e);
+            throw new ClosableException("Closing stream error", e);
         }
     }
 }

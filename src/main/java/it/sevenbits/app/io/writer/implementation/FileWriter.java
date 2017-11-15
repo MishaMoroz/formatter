@@ -5,8 +5,7 @@ import it.sevenbits.app.io.closable.IClosable;
 import it.sevenbits.app.io.writer.IWriter;
 import it.sevenbits.app.io.writer.WriterException;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class FileWriter implements IWriter, IClosable {
 
@@ -14,9 +13,13 @@ public class FileWriter implements IWriter, IClosable {
 
     public FileWriter(final String path) throws WriterException {
         try {
-            bufferedWriter = new BufferedWriter(new java.io.FileWriter(path));
+            FileOutputStream outputStream =
+                    new FileOutputStream(new File(path));
+            Writer fileWriter =
+                    new OutputStreamWriter(outputStream, "utf-8");
+            bufferedWriter = new BufferedWriter(fileWriter);
         } catch (IOException e) {
-            throw new WriterException("Error opening file", e);
+            throw new WriterException("Opening file error", e);
         }
     }
 
@@ -26,7 +29,7 @@ public class FileWriter implements IWriter, IClosable {
         try {
             bufferedWriter.write(symbol);
         } catch (IOException e) {
-            throw new WriterException("Error writing", e);
+            throw new WriterException("Writing error", e);
         }
     }
 
@@ -35,7 +38,7 @@ public class FileWriter implements IWriter, IClosable {
         try {
             bufferedWriter.close();
         } catch (IOException e) {
-            throw new ClosableException("Error closing", e);
+            throw new ClosableException("Closing error", e);
         }
     }
 }

@@ -22,7 +22,7 @@ public class StringWriter implements IWriter {
         try {
             resultString.append(symbol);
         } catch (Exception e) {
-            throw new WriterException("Error writing", e);
+            throw new WriterException("Writing error", e);
         }
 
     }

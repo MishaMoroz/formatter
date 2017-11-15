@@ -19,9 +19,9 @@ public class CopyFormatter implements IFormatter {
                 out.write(currentSymbol);
             }
         } catch (ReaderException e) {
-            throw new FormatterException("Error reading", e);
+            throw new FormatterException("Reading error", e);
         } catch (WriterException e) {
-            throw new FormatterException("Error writing", e);
+            throw new FormatterException("Writing error", e);
         }
     }
 }

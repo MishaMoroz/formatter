@@ -25,7 +25,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>it.sevenbits.Main</mainClass>
+                            <mainClass>it.sevenbits.app.Main</mainClass>
                         </manifest>
                     </archive>
                     <source>1.8</source>

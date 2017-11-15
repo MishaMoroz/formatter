@@ -1,28 +1,24 @@
 package it.sevenbits.app;
 
-import it.sevenbits.app.formatter.FormatterException;
 import it.sevenbits.app.formatter.IFormatter;
 import it.sevenbits.app.formatter.implementation.FormatterJavaCode;
-import it.sevenbits.app.io.reader.IReader;
-import it.sevenbits.app.io.reader.implementation.StringReader;
-import it.sevenbits.app.io.writer.IWriter;
-import it.sevenbits.app.io.writer.implementation.StringWriter;
+import it.sevenbits.app.io.reader.implementation.FileReader;
+import it.sevenbits.app.io.writer.implementation.FileWriter;
 
 /**
  * Class main.
  */
 public class Main {
 
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws Exception {
 
-        IReader in = new StringReader("Hello wordld!");
-        IWriter out = new StringWriter();
         IFormatter formatter = new FormatterJavaCode();
-        try {
-            formatter.format(in, out);
-        } catch (FormatterException e) {
-            e.printStackTrace();
-        }
+        try (
+                FileReader in = new FileReader(args[0]);
+                FileWriter out = new FileWriter(args[1]))
+        {
 
+            formatter.format(in, out);
+        }
     }
 }

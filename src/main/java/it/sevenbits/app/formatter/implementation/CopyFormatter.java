@@ -14,8 +14,8 @@ public class CopyFormatter implements IFormatter {
     public void format(IReader in, IWriter out) throws FormatterException {
         try {
             char currentSymbol;
-            while (in.hasNext()) {
-                currentSymbol = in.readChar();
+            while (in.readNext()) {
+                currentSymbol = in.getChar();
                 out.write(currentSymbol);
             }
         } catch (ReaderException e) {

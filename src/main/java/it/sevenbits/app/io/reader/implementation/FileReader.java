@@ -12,7 +12,7 @@ public class FileReader implements IReader, IClosable {
     private BufferedReader bufferedReader;
     private int currentSymbolId;
 
-    public FileReader(final String path) throws ReaderException, UnsupportedEncodingException {
+    public FileReader(final String path) throws ReaderException {
         try {
             InputStream fileStream =
                     new FileInputStream(new File(path));
@@ -21,11 +21,13 @@ public class FileReader implements IReader, IClosable {
             bufferedReader = new BufferedReader(fileReader);
         } catch (FileNotFoundException e) {
             throw new ReaderException("Opening file error", e);
+        } catch (UnsupportedEncodingException e) {
+            throw new ReaderException("Unsupported encoding", e);
         }
     }
 
     @Override
-    public Boolean hasNext() throws ReaderException {
+    public boolean readNext() throws ReaderException {
         try {
             currentSymbolId = bufferedReader.read();
             return currentSymbolId > -1;
@@ -35,7 +37,7 @@ public class FileReader implements IReader, IClosable {
     }
 
     @Override
-    public char readChar() throws ReaderException {
+    public char getChar() throws ReaderException {
         return (char) currentSymbolId;
     }
 

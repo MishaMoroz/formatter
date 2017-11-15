@@ -14,12 +14,12 @@ public class StringReader implements IReader {
     }
 
     @Override
-    public Boolean hasNext() throws ReaderException {
+    public boolean readNext() throws ReaderException {
         return index < value.length();
     }
 
     @Override
-    public char readChar() throws ReaderException {
+    public char getChar() throws ReaderException {
 
         try {
             return value.charAt(index++);

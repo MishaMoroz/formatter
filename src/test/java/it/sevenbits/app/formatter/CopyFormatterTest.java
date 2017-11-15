@@ -26,7 +26,7 @@ public class CopyFormatterTest {
         IReader in = new StringReader("Hello world");
         IWriter out = new StringWriter();
         formatter.format(in, out);
-        assertEquals("wrong result", "Hello world", out.toString());
+        assertEquals("Hello world", out.toString());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class CopyFormatterTest {
         IReader in = new StringReader("Hello world!!!");
         IWriter out = new StringWriter();
         formatter.format(in, out);
-        assertEquals("wrong result", "Hello world!!!", out.toString());
+        assertEquals("Hello world!!!", out.toString());
     }
 
 

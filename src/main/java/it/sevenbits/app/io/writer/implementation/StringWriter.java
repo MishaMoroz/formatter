@@ -3,6 +3,8 @@ package it.sevenbits.app.io.writer.implementation;
 import it.sevenbits.app.io.writer.IWriter;
 import it.sevenbits.app.io.writer.WriterException;
 
+import java.io.IOException;
+
 public class StringWriter implements IWriter {
 
     private StringBuilder resultString;
@@ -24,6 +26,11 @@ public class StringWriter implements IWriter {
         } catch (Exception e) {
             throw new WriterException("Writing error", e);
         }
+
+    }
+
+    @Override
+    public void indent(final int lvl) throws IOException {
 
     }
 }

@@ -23,18 +23,18 @@ public class CopyFormatterTest {
 
     @Test
     public void simpleTest() throws WriterException, ReaderException, FormatterException {
-        IReader in = new StringReader("Hello world");
+        IReader in = new StringReader("Hello;world");
         IWriter out = new StringWriter();
         formatter.format(in, out);
-        assertEquals("Hello world", out.toString());
+        assertEquals("Hello;\nworld", out.toString());
     }
 
     @Test
     public void secondSimpleTest() throws WriterException, ReaderException, FormatterException {
-        IReader in = new StringReader("Hello world!!!");
+        IReader in = new StringReader("Hello;world!!!");
         IWriter out = new StringWriter();
         formatter.format(in, out);
-        assertEquals("Hello world!!!", out.toString());
+        assertEquals("Hello;\nworld!!!", out.toString());
     }
 
 

@@ -21,8 +21,7 @@ public class Main {
         try (
                 FileReader in = new FileReader(args[0]);
                 FileWriter out = new FileWriter(args[1])
-        )
-        {
+        ) {
 
             formatter.format(in, out);
         }

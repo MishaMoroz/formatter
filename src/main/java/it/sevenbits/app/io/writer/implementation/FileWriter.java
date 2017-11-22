@@ -7,6 +7,7 @@ import it.sevenbits.app.io.writer.WriterException;
 
 import java.io.*;
 
+
 public class FileWriter implements IWriter, IClosable {
 
     private BufferedWriter bufferedWriter;
@@ -31,6 +32,13 @@ public class FileWriter implements IWriter, IClosable {
         } catch (IOException e) {
             throw new WriterException("Writing error", e);
         }
+    }
+    @Override
+    public void indent(final int lvl) throws IOException {
+        for (int i = 0; i < lvl; i++) {
+            bufferedWriter.write("    ");
+        }
+        bufferedWriter.flush();
     }
 
     @Override
